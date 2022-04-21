@@ -2,7 +2,7 @@
 
 export GPG_TTY=$(tty)
 echo "hostname: $(hostname)"
-keybase login
+keybase login --devicename $(hostname) clhynfield
 keybase pgp export | gpg --import
 keybase pgp export --secret | gpg --import --allow-secret-key-import
 GPG_SECRET_KEYID=$(gpg --list-secret-keys  --keyid-format SHORT | awk '/^sec/{sub(".*/","",$2); print$2}')
